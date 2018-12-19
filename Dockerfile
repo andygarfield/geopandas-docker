@@ -31,11 +31,11 @@ RUN apt-get update && \
     cp /FileGDB_API-64gcc51/lib/* /usr/lib && \
     cp /FileGDB_API-64gcc51/include/* /usr/include && \
 
-    cd $proj_install_dir && ./configure && make && make install && \
+    cd $proj_install_dir && ./configure && make && make install && ldconfig && \
 
     cd $gdal_install_dir && \
     ./configure --with-fgdb=/usr --with-proj=/usr/local && \
-    cd $gdal_install_dir && make && make install && \
+    cd $gdal_install_dir && make && make install && ldconfig && \
 
     pip install cython && \
     pip install git+https://github.com/jswhit/pyproj.git && \
