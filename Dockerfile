@@ -46,6 +46,6 @@ RUN apt-get update && \
         build-essential \
         git \
         wget && \
-    apt autoremove && \
+    apt -y autoremove && \
     rm -rd /tmp/* && \
     rm -rd /FileGDB_API-64gcc51
