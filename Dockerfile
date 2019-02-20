@@ -13,7 +13,8 @@ RUN apt-get update && \
         build-essential \
         git \
         wget \
-        libgeos-3.5.1 && \
+        libgeos-3.5.1 \
+        libspatialite7 && \
 
     git clone https://github.com/Esri/file-geodatabase-api.git /tmp/gdb && \
     wget \ 
