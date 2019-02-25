@@ -14,7 +14,8 @@ RUN apt-get update && \
         git \
         wget \
         libgeos-3.5.1 \
-        libsqlite3-mod-spatialite && \
+        libsqlite3-mod-spatialite \
+        libspatialindex4v5 && \
 
     git clone https://github.com/Esri/file-geodatabase-api.git /tmp/gdb && \
     wget \ 
