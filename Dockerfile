@@ -41,7 +41,7 @@ RUN apt-get update && \
 
     pip install cython && \
     pip install git+https://github.com/jswhit/pyproj.git && \
-    pip install geopandas && \
+    pip install geopandas rtree && \
 
     apt-get remove -y \
         build-essential \
