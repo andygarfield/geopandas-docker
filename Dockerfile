@@ -6,14 +6,14 @@ ENV gdb_dir          /usr/lib
 ENV gdal_archive     /tmp/gdal.tar.gz
 ENV gdal_install_dir /tmp/gdal-2.3.2
 ENV proj_archive     /tmp/proj.tar.gz
-ENV proj_install_dir /tmp/proj-5.2.0
+ENV proj_install_dir /tmp/proj-6.0.0
 
 RUN apt-get update && \
     apt-get install -y \
         build-essential \
         git \
         wget \
-        libgeos-3.5.1 \
+        libgeos-3.7.1 \
         libsqlite3-mod-spatialite \
         libspatialindex-c4v5 && \
 
@@ -23,7 +23,7 @@ RUN apt-get update && \
         -O $gdal_archive && \
     
     wget \
-        http://download.osgeo.org/proj/proj-5.2.0.tar.gz \
+        https://github.com/OSGeo/proj.4/releases/download/6.0.0/proj-6.0.0.tar.gz \
         -O $proj_archive && \
 
     tar xvzf $proj_archive -C /tmp && \
