@@ -32,9 +32,12 @@ RUN apt-get update && \
     cd $gdal_install_dir && \
     ./configure --with-fgdb=/usr --with-proj=/usr/local && \
     cd $gdal_install_dir && make && make install && ldconfig && \
-    pip install cython && \
-    pip install git+https://github.com/jswhit/pyproj.git && \
-    pip install geopandas rtree && \
+    pip install \
+        cython \
+        geopandas \
+        git+https://github.com/jswhit/pyproj.git \
+        rtree \
+        pyspatialite && \
     apt-get remove -y \
         build-essential \
         git \
