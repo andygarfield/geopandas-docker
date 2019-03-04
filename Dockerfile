@@ -15,7 +15,8 @@ RUN apt-get update && \
         wget \
         libgeos-3.5.1 \
         libsqlite3-mod-spatialite \
-        libspatialindex-c4v5 && \
+        libspatialindex-c4v5 \
+        spatialite-bin && \
     git clone https://github.com/Esri/file-geodatabase-api.git /tmp/gdb && \
     wget \ 
         http://download.osgeo.org/gdal/2.3.2/gdal-2.3.2.tar.gz \
