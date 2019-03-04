@@ -13,7 +13,7 @@ RUN apt-get update && \
         build-essential \
         git \
         wget \
-        libgeos-3.7.1 \
+        libgeos-3.5.1 \
         libsqlite3-mod-spatialite \
         libspatialindex-c4v5 && \
 
