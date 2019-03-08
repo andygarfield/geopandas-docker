@@ -41,6 +41,7 @@ RUN apt-get update && \
     cd $proj_install_dir && ./configure && make && make install && ldconfig && \
     cd $gdal_install_dir && ./configure --with-fgdb=/usr --with-proj=/usr/local && \
     cd $gdal_install_dir && make && make install && ldconfig && \
+    pip install -I fiona --no-binary fiona && \
     pip install \
         cython \
         geopandas \
