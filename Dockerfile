@@ -10,17 +10,22 @@ ENV proj_install_dir /tmp/proj-6.0.0
 
 RUN apt-get update && \
     apt-get install -y \
+        automake \
         build-essential \
         git \
         wget \
         libgeos-3.7.1 \
+        libsqlite3-dev \
         libsqlite3-mod-spatialite \
-        libspatialindex-c4v5 \
+        libtool \
+        m4 \
         pkg-config \
         python3.7 \
         python3.7-dev \
-        spatialite-bin && \
+        spatialite-bin \
+        sqlite3 && \
     git clone https://github.com/Esri/file-geodatabase-api.git /tmp/gdb && \
+    git clone https://github.com/libspatialindex/libspatialindex.git /tmp/libspat && \
     wget \ 
         http://download.osgeo.org/gdal/2.4.0/gdal-2.4.0.tar.gz \
         -O $gdal_archive && \
@@ -32,9 +37,9 @@ RUN apt-get update && \
     tar xvzf $gdb_install_dir/FileGDB_API_1_5_1-64gcc51.tar.gz && \
     cp /FileGDB_API-64gcc51/lib/* /usr/lib && \
     cp /FileGDB_API-64gcc51/include/* /usr/include && \
+    cd /tmp/libspat && ./autogen.sh && ./configure && make && make install && \
     cd $proj_install_dir && ./configure && make && make install && ldconfig && \
-    cd $gdal_install_dir && \
-    ./configure --with-fgdb=/usr --with-proj=/usr/local && \
+    cd $gdal_install_dir && ./configure --with-fgdb=/usr --with-proj=/usr/local && \
     cd $gdal_install_dir && make && make install && ldconfig && \
     pip install \
         cython \
@@ -43,8 +48,11 @@ RUN apt-get update && \
         rtree \
         pyspatialite && \
     apt-get remove -y \
+        automake \
         build-essential \
         git \
+        libtool \
+        m4 \
         pkg-config \
         wget && \
     apt -y autoremove && \
