@@ -1,4 +1,4 @@
-FROM python:3.7-slim
+FROM debian:buster-slim
 
 ENV gdb_archive      /tmp/filegdb.tar.gz
 ENV gdb_install_dir  /tmp/gdb/FileGDB_API_1.5.1
@@ -16,6 +16,8 @@ RUN apt-get update && \
         libgeos-3.5.1 \
         libsqlite3-mod-spatialite \
         libspatialindex-c4v5 \
+        python3.7 \
+        python3.7-dev \
         spatialite-bin && \
     git clone https://github.com/Esri/file-geodatabase-api.git /tmp/gdb && \
     wget \ 
