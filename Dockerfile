@@ -22,6 +22,7 @@ RUN apt-get update && \
         pkg-config \
         python3.7 \
         python3.7-dev \
+        python-pip \
         spatialite-bin \
         sqlite3 && \
     git clone https://github.com/Esri/file-geodatabase-api.git /tmp/gdb && \
