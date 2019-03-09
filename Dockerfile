@@ -47,8 +47,7 @@ RUN apt-get update && \
         cython \
         geopandas \
         git+https://github.com/jswhit/pyproj.git \
-        rtree \
-        pyspatialite && \
+        rtree && \
     apt-get remove -y \
         automake \
         build-essential \
