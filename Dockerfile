@@ -22,7 +22,7 @@ RUN apt-get update && \
         pkg-config \
         python3.7 \
         python3.7-dev \
-        python-pip \
+        python3-pip \
         spatialite-bin \
         sqlite3 && \
     git clone https://github.com/Esri/file-geodatabase-api.git /tmp/gdb && \
@@ -42,8 +42,8 @@ RUN apt-get update && \
     cd $proj_install_dir && ./configure && make && make install && ldconfig && \
     cd $gdal_install_dir && ./configure --with-fgdb=/usr --with-proj=/usr/local && \
     cd $gdal_install_dir && make && make install && ldconfig && \
-    pip install -I fiona --no-binary fiona && \
-    pip install \
+    python3.7 -m pip install -I fiona --no-binary fiona && \
+    python3.7 -m pip install \
         cython \
         geopandas \
         git+https://github.com/jswhit/pyproj.git \
