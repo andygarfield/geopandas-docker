@@ -8,6 +8,8 @@ ENV gdal_install_dir /tmp/gdal-2.4.0
 ENV proj_archive     /tmp/proj.tar.gz
 ENV proj_install_dir /tmp/proj-6.0.0
 
+ENV PROJ_LIB         /usr/local/share/proj
+
 RUN apt-get update && \
     apt-get install -y \
         automake \
