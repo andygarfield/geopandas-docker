@@ -41,7 +41,7 @@ RUN tar xvzf $gdb_install_dir/FileGDB_API_1_5_1-64gcc51.tar.gz
 RUN cp /FileGDB_API-64gcc51/lib/* /usr/lib
 RUN cp /FileGDB_API-64gcc51/include/* /usr/include
 RUN cd /tmp/libspat && ./autogen.sh && ./configure && make && make install
-RUN cd $proj_install_dir && ./configure && make && make install && ldconfig
+RUN cd /tmp/proj-5.2.0 && ./configure && make && make install && ldconfig
 RUN cd $gdal_install_dir && ./configure --with-fgdb=/usr --with-proj=/usr/local
 RUN cd $gdal_install_dir && make && make install && ldconfig
 RUN python3.7 -m pip install -I fiona --no-binary fiona
