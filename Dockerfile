@@ -42,8 +42,8 @@ RUN cp /FileGDB_API-64gcc51/lib/* /usr/lib
 RUN cp /FileGDB_API-64gcc51/include/* /usr/include
 RUN cd /tmp/libspat && ./autogen.sh && ./configure && make && make install
 RUN cd /tmp/proj-5.2.0 && ./configure && make && make install && ldconfig
-RUN cd $gdal_install_dir && ./configure --with-fgdb=/usr --with-proj=/usr/local
-RUN cd $gdal_install_dir && make && make install && ldconfig
+RUN cd /tmp/gdal-2.4.0 && ./configure --with-fgdb=/usr --with-proj=/usr/local
+RUN cd /tmp/gdal-2.4.0 && make && make install && ldconfig
 RUN python3.7 -m pip install -I fiona --no-binary fiona
 RUN python3.7 -m pip install \
         cython \
