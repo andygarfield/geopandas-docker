@@ -4,9 +4,9 @@ ENV gdb_archive      /tmp/filegdb.tar.gz
 ENV gdb_install_dir  /tmp/gdb/FileGDB_API_1.5.1
 ENV gdb_dir          /usr/lib
 ENV gdal_archive     /tmp/gdal.tar.gz
-ENV gdal_install_dir /tmp/gdal
+ENV gdal_install_dir /tmp/gdal-2.4.0
 ENV proj_archive     /tmp/proj.tar.gz
-ENV proj_install_dir /tmp/proj
+ENV proj_install_dir /tmp/proj-5.2.0
 
 ENV PROJ_LIB         /usr/local/share/proj
 
@@ -41,9 +41,9 @@ RUN apt-get update && \
     cp /FileGDB_API-64gcc51/lib/* /usr/lib && \
     cp /FileGDB_API-64gcc51/include/* /usr/include && \
     cd /tmp/libspat && ./autogen.sh && ./configure && make && make install && \
-    cd /tmp/proj-5.2.0 && ./configure && make && make install && ldconfig && \
-    cd /tmp/gdal-2.4.0 && ./configure --with-fgdb=/usr --with-proj=/usr/local && \
-    cd /tmp/gdal-2.4.0 && make && make install && ldconfig && \
+    cd $proj_install_dir && ./configure && make && make install && ldconfig && \
+    cd $gdal_install_dir && ./configure --with-fgdb=/usr --with-proj=/usr/local && \
+    cd $gdal_install_dir && make && make install && ldconfig && \
     python3 -m pip install -I fiona --no-binary fiona && \
     python3 -m pip install \
         cython && \
