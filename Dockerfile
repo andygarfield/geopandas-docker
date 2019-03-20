@@ -44,9 +44,10 @@ RUN cd /tmp/libspat && ./autogen.sh && ./configure && make && make install
 RUN cd /tmp/proj-5.2.0 && ./configure && make && make install && ldconfig
 RUN cd /tmp/gdal-2.4.0 && ./configure --with-fgdb=/usr --with-proj=/usr/local
 RUN cd /tmp/gdal-2.4.0 && make && make install && ldconfig
-RUN python3.7 -m pip install -I fiona --no-binary fiona
-RUN python3.7 -m pip install \
-        cython \
+RUN python3 -m pip install -I fiona --no-binary fiona
+RUN python3 -m pip install \
+        cython
+RUN python3 -m pip install \
         geopandas \
         git+https://github.com/pyproj4/pyproj.git@v1.9.6rel \
         rtree
