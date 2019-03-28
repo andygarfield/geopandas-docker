@@ -43,7 +43,7 @@ RUN apt-get update && \
     cd /tmp/libspat && ./autogen.sh && ./configure && make && make install && \
     cd $proj_install_dir && ./configure && make && make install && ldconfig && \
     cd $gdal_install_dir && ./configure --with-fgdb=/usr --with-proj=/usr/local && \
-    cd $gdal_install_dir && make && make install && ldconfig && \
+    make && make install && ldconfig && \
     python3 -m pip install -I fiona --no-binary fiona && \
     python3 -m pip install numpy && \
     python3 -m pip install \
