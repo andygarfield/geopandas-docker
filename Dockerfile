@@ -30,6 +30,7 @@ RUN apt-get update && \
     ln -s /usr/bin/python3 /usr/bin/python && \
     git clone https://github.com/Esri/file-geodatabase-api.git /tmp/gdb && \
     git clone https://github.com/libspatialindex/libspatialindex.git /tmp/libspat && \
+    cd /tmp/libspat && git checkout tags/1.9.0 && cd / && \
     wget \ 
         http://download.osgeo.org/gdal/2.4.0/gdal-2.4.0.tar.gz \
         -O $gdal_archive && \
