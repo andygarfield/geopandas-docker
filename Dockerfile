@@ -27,7 +27,6 @@ RUN apt-get update && \
         python3-pip \
         spatialite-bin \
         sqlite3 && \
-    ln -s /usr/bin/python3 /usr/bin/python && \
     git clone https://github.com/Esri/file-geodatabase-api.git /tmp/gdb && \
     git clone https://github.com/libspatialindex/libspatialindex.git /tmp/libspat && \
     cd /tmp/libspat && git checkout tags/1.9.0 && cd / && \
@@ -46,12 +45,12 @@ RUN apt-get update && \
     cd $proj_install_dir && ./configure && make && make install && ldconfig && \
     cd $gdal_install_dir && ./configure --with-fgdb=/usr --with-proj=/usr/local && \
     make && make install && ldconfig && \
-    python -m pip install -I fiona --no-binary fiona && \
-    python -m pip install numpy && \
-    python -m pip install \
+    python3 -m pip install -I fiona --no-binary fiona && \
+    python3 -m pip install numpy && \
+    python3 -m pip install \
         cython \
         shapely[vectorized] && \
-    python -m pip install \
+    python3 -m pip install \
         geopandas \
         git+https://github.com/pyproj4/pyproj.git@v1.9.6rel \
         rtree && \
@@ -65,4 +64,5 @@ RUN apt-get update && \
         wget && \
     apt -y autoremove && \
     rm -rd /tmp/* && \
-    rm -rd /FileGDB_API-64gcc51
+    rm -rd /FileGDB_API-64gcc51 && \
+    ln -s /usr/bin/python3 /usr/bin/python
